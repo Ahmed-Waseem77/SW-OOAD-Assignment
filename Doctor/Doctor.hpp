@@ -4,7 +4,7 @@
 #include "../include/include.hpp"
 #include "../User/user.hpp"
 #include "../Appointment/Appointment.hpp"
-#include "./defines.hpp"
+#include "../defines.hpp"
 
 class Doctor : public User {
 

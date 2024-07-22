@@ -1,6 +1,6 @@
 
-#ifndef ROLE_H
-#define ROLE_H
+#ifndef ROLE_HPP
+#define ROLE_HPP
 
 enum class Role {
     Patient,

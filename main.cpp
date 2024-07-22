@@ -2,11 +2,11 @@
 #include <iostream>
 #include "./Doctor/Doctor.hpp"
 #include "./Appointment/Appointment.hpp"
-#include "User/user.h"
+#include "User/User.hpp"
 
 
 int main() {
-    Doctor doctor;    
+    Doctor doctor();    
  
     return 0;
 }
