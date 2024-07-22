@@ -1,6 +1,6 @@
-#include "User.h"
+#include "../User/user.hpp"
 #include <iostream>
-#include "exceptions.h"
+#include "../Exceptions/exceptions.hpp"
 
 User::User(const int& userId,const string& name, const string& phone, const string& email, const string& password, Role role)
     : id(userId), name(name), phoneNumber(phone), emailAddress(email), password(password), role(role) {
