@@ -1,9 +1,13 @@
 #include "User.h"
 #include <iostream>
-
+#include "exceptions.h"
 
 User::User(const int& userId,const string& name, const string& phone, const string& email, const string& password, Role role)
-    : id(userId), name(name), phoneNumber(phone), emailAddress(email), password(password), role(role) {}
+    : id(userId), name(name), phoneNumber(phone), emailAddress(email), password(password), role(role) {
+        if (name.empty() || phone.empty() || email.empty() || password.empty()) {
+        throw invalid_argument("User information can't be empty");
+    }
+    }
 
 
 bool User::login(const string& email, const string& passedPassword) {
@@ -11,8 +15,8 @@ bool User::login(const string& email, const string& passedPassword) {
         cout << "Login successful for " << email << endl;
         return true;
     }
-    cout << "Login failed for " << email << endl;
-    return false;
+    throw LoginFailedException("Login failed: Invalid email or password");
+    
 }
 
 
@@ -39,11 +43,6 @@ bool User::promptDeleteOwnAccount() {
 }
 
 
-Role User::getRole() const {
-    return role;
-}
 
 
-void User::setRole(Role newRole) {
-    role = newRole;
-}
+

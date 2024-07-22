@@ -22,8 +22,6 @@ public:
     bool promptUpdateUserAccount();
     bool promptDeleteOwnAccount();
     
-    Role getRole() const;
-    void setRole(Role newRole); 
 };
 
 #endif 
