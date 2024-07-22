@@ -2,7 +2,7 @@
 #define DOCTOR_HPP
 
 #include "../include/include.hpp"
-#include "../User/user.h"
+#include "../User/user.hpp"
 #include "../Appointment/Appointment.hpp"
 #include "./defines.hpp"
 
