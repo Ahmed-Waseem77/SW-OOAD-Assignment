@@ -1,6 +1,15 @@
 
 #include "./Doctor.hpp"
 
+Doctor::Doctor() {
+    salary = 0;
+}
+
+Doctor::Doctor(float salary, schedule appointments) {
+    this->salary = salary;
+    this->appointments = appointments;
+}
+
 void Doctor::viewAppointments() {
     for (auto const& [key, val] : appointments) {
         cout << "Appointment ID: " << key << endl;
@@ -33,7 +42,7 @@ bool Doctor::isValidAppointment(appointmentID appointmentID) {
     return appointments.find(appointmentID) != appointments.end() || appointments[appointmentID].isBooked;
 }
 
-bool Doctor::setAppointments(map<int, Appointment> newAppointments) {
+bool Doctor::setAppointments(schedule newAppointments) {
     appointments = newAppointments;
     return true;
 }

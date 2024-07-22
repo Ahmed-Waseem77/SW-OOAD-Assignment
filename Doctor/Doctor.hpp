@@ -12,7 +12,10 @@ private:
     float salary;
     
 public:
-    map<appointmentID, Appointment> appointments;
+    Doctor();
+    Doctor(float, schedule);
+
+    schedule appointments;
 
     void viewAppointments();
 
@@ -20,7 +23,7 @@ public:
     status updatePatientMedicalRecords(patientID); 
 
     bool isValidAppointment(appointmentID);
-    bool setAppointments(map<int, Appointment> newAppointments);
+    bool setAppointments(schedule newAppointments);
 };
 
 #endif // DOCTOR_HPP

@@ -6,6 +6,7 @@ typedef int patientID;
 typedef int doctorID;
 typedef int appointmentID;
 typedef int status;
+typedef map<appointmentID, Appointment> schedule;
 
 #define NO_MEDICAL_RECORDS_STRING "No medical records found for patient"
 #define NO_MEDICAL_RECORDS_ERROR 1
