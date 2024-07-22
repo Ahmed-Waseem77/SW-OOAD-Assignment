@@ -6,6 +6,7 @@ build/
 .idea/
 
 # executables
+./main.exe
+main.exe
+.out
 .exe
-main
-

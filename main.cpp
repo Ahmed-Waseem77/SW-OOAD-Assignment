@@ -1,7 +1,12 @@
 
 #include <iostream>
+#include "./Doctor/Doctor.hpp"
+#include "./Appointment/Appointment.hpp"
+#include "User/user.h"
+
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    Doctor doctor;    
+ 
     return 0;
 }
