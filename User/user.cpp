@@ -22,9 +22,9 @@
 #include <iostream>
 #include "../Exceptions/exceptions.hpp"
 
-User::User(const int& userId,const string& name, const string& phone, const string& email, const string& password, Role role)
+User::User(const string& userId,const string& name, const string& phone, const string& email, const string& password, Role role)
     : id(userId), name(name), phoneNumber(phone), emailAddress(email), password(password), role(role) {
-        if (name.empty() || phone.empty() || email.empty() || password.empty()) {
+        if (userId.empty() || name.empty() || phone.empty() || email.empty() || password.empty()) {
         throw invalid_argument("User information can't be empty");
     }
     }
@@ -50,15 +50,27 @@ void User::viewAccount() {
 
 
 bool User::promptUpdateUserAccount() {
-    cout << "Updating user account for " << emailAddress << endl;
+    cin>>name;
+    cin>>phoneNumber;
+    cin>>emailAddress;
+    cin>>password;
+    cout << "Updating user account for " << name << emailAddress << endl;
+   
     //Should call from dbUtils the UPDATE function and pass the ID 
+    //the name,phoneNumber,emailAddress,password should be in a json format
+    //databasse.updateUser(id,name,phoneNumber,emailAddress,password);
+    
+    
     return true;
 }
 
 
 bool User::promptDeleteOwnAccount() {
-    cout << "Account for " << emailAddress << " deleted." << endl;
-    //Should call from dbUtils the DELETE function and pass the ID 
+    DbUtils* database= DbUtils::getInstance();
+    database->removeUserRecord(id);
+    cout << "Account for " << emailAddress <<"whose id is" << id << "is deleted." << endl;
+
+    
     return true;
 }
 

@@ -22,19 +22,21 @@
 
 #include <string>
 #include "../Role/Role.hpp"
-
+#include"../Dbutils/DbUtils.hpp"
 using namespace std;
 class User {
 protected:
-    int id;
+    string id;
     string name;
     string phoneNumber;
     string emailAddress;
     string password;
     Role role;  
+    
+    
 
 public:
-    User(const int& userId,const string& name, const string& phone, const string& email, const string& password, Role role);
+    User(const string& userId,const string& name, const string& phone, const string& email, const string& password, Role role);
 
     bool login(const string& email, const string& pass);
     void viewAccount();

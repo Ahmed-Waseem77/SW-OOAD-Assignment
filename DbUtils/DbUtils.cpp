@@ -18,7 +18,7 @@ DbUtils::DbUtils() {
 
 
 
-bool DbUtils::createUserRecord(const string& collection, const string& jsonString) {
+bool DbUtils::createUserRecord( const string& jsonString) {
     
     try{
         if(!connectionFlag) {
@@ -35,7 +35,7 @@ bool DbUtils::createUserRecord(const string& collection, const string& jsonStrin
     
 }
 
-bool DbUtils::updateUserRecord(const string& collection, const string& documentID, const string& jsonString) {
+bool DbUtils::updateUserRecord( const string& documentID, const string& jsonString) {
     try{
         if(!connectionFlag) {
             throw runtime_error ("Database connection failed");
@@ -50,7 +50,7 @@ bool DbUtils::updateUserRecord(const string& collection, const string& documentI
     
 }
 
-bool DbUtils::removeUserRecord(const string& collection, const string& documentID) {
+bool DbUtils::removeUserRecord(const string& documentID) {
     try{
         if(!connectionFlag) {
             throw runtime_error ("Database connection failed");
@@ -64,14 +64,14 @@ bool DbUtils::removeUserRecord(const string& collection, const string& documentI
    
 }
 
-int DbUtils::countDocuments(const std::string &collection)
+int DbUtils::countDocuments(Role role)
 {
      try{
         if(!connectionFlag) {
             throw runtime_error ("Database connection failed");
         }
-        //count the number of documents in the collection using the database connection pointer
-        cout << "Number of documents in the collection: " << collection << " is 5" << endl;
+        //count the number of documents for the passed role in the collection using the database connection pointer
+        cout << "The Number is 5" << endl;
     }
     catch (const exception& e) {
             cout << "Error: " << e.what() << endl;
@@ -89,6 +89,12 @@ DbUtils *DbUtils::getInstance()
     return databaseInstance;
 }
 
+void DbUtils::closeConnection()
+{
+    //databaseConnection.close();
+    cout << "Connection closed" << endl;
+   
+}
 
 bool DbUtils::checkDatabaseConnectionAsynchronously()
 {

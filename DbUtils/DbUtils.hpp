@@ -2,6 +2,7 @@
 #define DBUTILS_HPP
 #include <../include/include.hpp>
 #include "defines.hpp"
+#include "../Role/Role.hpp"
 #include <thread>
  //Singlton Class since it is only one databaseConnection of the class
 class DbUtils {
@@ -15,15 +16,16 @@ public:
     
     DbUtils(const DbUtils& obj) = delete;
 
-    static bool createUserRecord(const std::string& collection, const std::string& jsonString);
-    static bool updateUserRecord(const std::string& collection, const std::string& documentID, const std::string& jsonString);
-    static bool removeUserRecord(const std::string& collection, const std::string& documentID);
-    static int countDocuments(const std::string& collection);
+    static bool createUserRecord( const std::string& jsonString);
+    static bool updateUserRecord( const std::string& documentID, const std::string& jsonString);
+    static bool removeUserRecord( const std::string& documentID);
+    static int countDocuments(Role role);
 
     static DbUtils* getInstance();
     static void closeConnection();
-    static bool isConnected();
     static bool checkDatabaseConnectionAsynchronously();
+
+    ~DbUtils();
 
 };
 
