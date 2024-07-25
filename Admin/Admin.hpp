@@ -15,35 +15,29 @@
     You should have received a copy of the GNU General Public License along
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
 */
 
-#ifndef USER_HPP
-#define USER_HPP
 
-#include <string>
-#include "../Role/Role.hpp"
-#include"../Dbutils/DbUtils.hpp"
-using namespace std;
-class User {
-protected:
-    string id;
-    string name;
-    string phoneNumber;
-    string emailAddress;
-    string password;
-    Role role;  
-    
-    
+#ifndef ADMIN_HPP
+#define ADMIN_HPP
 
-public:
-    User();
-    User(const string& userId,const string& name, const string& phone, const string& email, const string& password, Role role);
+#include "../include/include.hpp"
+#include "../User/user.hpp"
+#include "../defines.hpp"
 
-    bool login(const string& email, const string& pass);
-    void viewAccount();
-    void promptUpdateUserAccount();
-    void promptDeleteOwnAccount();
-    
+class Admin : public User {
+    private:
+        float salary;
+        DbUtils* database= DbUtils::getInstance();
+
+    public:
+        Admin();
+        void promptCreateUserAccount();
+        void promptUpdateUserAccount();
+        void promptDeleteUserAccount();
+        void viewStatistics();
+
+
 };
-
-#endif 
+#endif // ADMIN_HPP

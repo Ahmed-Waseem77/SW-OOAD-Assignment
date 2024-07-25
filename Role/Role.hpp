@@ -26,4 +26,16 @@ enum class Role {
     Admin
 };
 
+std::map<std::string, Role> roleMap = {
+    {"Patient", Role::Patient},
+    {"Doctor", Role::Doctor},
+    {"Admin", Role::Admin}
+};
+
+std::istream& operator>>(std::istream& in, Role& role) {
+    std::string roleStr;
+    in >> roleStr;
+    role = roleMap[roleStr];
+    return in;
+}
 #endif // ROLE_H

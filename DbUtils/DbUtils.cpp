@@ -1,3 +1,23 @@
+/*
+    Design Template for a simple Hospital Management System.
+    Copyright (C) 2024  Mahmoud Raslan, Ahmed Raslan
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program; if not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+*/
+
 #include "DbUtils.hpp"
 using namespace std;
 
@@ -18,13 +38,13 @@ DbUtils::DbUtils() {
 
 
 
-bool DbUtils::createUserRecord( const string& jsonString) {
+bool DbUtils::createUserRecord(User user) {
     
     try{
         if(!connectionFlag) {
             throw runtime_error ("Database connection failed");
         }
-        //Insert the json string into the collection using the database connection pointer
+        //Insert the user's data into the collection using the database connection pointer
         cout << "User record created successfully" << endl;
     }
     catch (const exception& e) {
@@ -56,6 +76,7 @@ bool DbUtils::removeUserRecord(const string& documentID) {
             throw runtime_error ("Database connection failed");
         }
         //remove the json string in the collection using the database connection pointer and the documentID
+        //if the documentID is not found, throw an exception
         cout << "User record removed successfully" << endl;
     }
     catch (const exception& e) {
