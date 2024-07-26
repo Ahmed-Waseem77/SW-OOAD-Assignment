@@ -22,9 +22,18 @@
 #include <iostream>
 #include "../Exceptions/exceptions.hpp"
 
-User::User(const int& userId,const string& name, const string& phone, const string& email, const string& password, Role role)
+
+User::User() {
+    id = "";
+    name = "";
+    phoneNumber = "";
+    emailAddress = "";
+    password = "";
+    role = Role::Patient;
+}
+User::User(const string& userId,const string& name, const string& phone, const string& email, const string& password, Role role)
     : id(userId), name(name), phoneNumber(phone), emailAddress(email), password(password), role(role) {
-        if (name.empty() || phone.empty() || email.empty() || password.empty()) {
+        if (userId.empty() || name.empty() || phone.empty() || email.empty() || password.empty()) {
         throw invalid_argument("User information can't be empty");
     }
     }
@@ -49,17 +58,41 @@ void User::viewAccount() {
 }
 
 
-bool User::promptUpdateUserAccount() {
-    cout << "Updating user account for " << emailAddress << endl;
-    //Should call from dbUtils the UPDATE function and pass the ID 
-    return true;
+void User::promptUpdateUserAccount() {
+
+    try{
+        cin>>name;
+        cin>>phoneNumber;
+        cin>>emailAddress;
+        cin>>password;
+        if(name.empty() || phoneNumber.empty() || emailAddress.empty() || password.empty()){
+            throw invalid_argument("User information can't be empty");
+        }
+        DbUtils* database= DbUtils::getInstance();
+        //the name,phoneNumber,emailAddress,password should be in a json format
+        //database->updateUserRecord(id,name,phoneNumber,emailAddress,password);
+        cout << "Updating user account for " << name << emailAddress << endl;
+        
+    }   
+    catch(exception& e){
+        cout<<e.what()<<endl;
+    }
+    
+    
 }
 
 
-bool User::promptDeleteOwnAccount() {
-    cout << "Account for " << emailAddress << " deleted." << endl;
-    //Should call from dbUtils the DELETE function and pass the ID 
-    return true;
+void User::promptDeleteOwnAccount() {
+    try{
+        DbUtils* database= DbUtils::getInstance();
+        database->removeUserRecord(id);
+        cout << "Account for " << emailAddress <<"whose id is" << id << "is deleted." << endl;
+    }
+    catch(exception& e){
+        cout<<e.what()<<endl;
+    
+    }    
+   
 }
 
 
