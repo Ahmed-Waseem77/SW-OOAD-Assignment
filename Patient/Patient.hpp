@@ -24,7 +24,7 @@
 #include "../User/User.hpp"
 #include "../Doctor/Doctor.hpp"
 #include "../defines.hpp"
-#include "../DbUtils/DbUtils.hpp"
+#include "../Repository/Repository.hpp"
 
 class Patient : public User {
     private:

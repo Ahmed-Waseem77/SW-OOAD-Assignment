@@ -25,11 +25,12 @@
 #include "../include/include.hpp"
 #include "../User/user.hpp"
 #include "../defines.hpp"
+#include "../Repository/Repository.hpp"
 
 class Admin : public User {
     private:
         float salary;
-        DbUtils* database= DbUtils::getInstance();
+        Repository* database= Repository::getInstance();
 
     public:
         Admin();

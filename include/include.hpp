@@ -24,7 +24,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-#include <map>
+#include <unordered_map>
 #include <ctime>
 #include <stdexcept>
 #include <thread>

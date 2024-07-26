@@ -23,7 +23,7 @@
 #include "../include/include.hpp"
 #include "../defines.hpp"
 #include "../Role/Role.hpp"
-#include "../User/User.hpp" 
+#include "../User/User.hpp"
 
  //Singleton Class for repository architecture
 class Repository {

@@ -20,13 +20,15 @@
 #ifndef ROLE_HPP
 #define ROLE_HPP
 
+#include "../include/include.hpp"
+
 enum class Role {
     Patient,
     Doctor,
     Admin
 };
 
-std::map<std::string, Role> roleMap = {
+std::unordered_map<std::string, Role> roleunordered_map = {
     {"Patient", Role::Patient},
     {"Doctor", Role::Doctor},
     {"Admin", Role::Admin}
@@ -35,18 +37,26 @@ std::map<std::string, Role> roleMap = {
 std::istream& operator>>(std::istream& in, Role& role) {
     std::string roleStr;
     in >> roleStr;
-    role = roleMap[roleStr];
+    role = roleunordered_map[roleStr];
     return in;
 }
 
-std::ostream& operator<<(std::ostream& out, Role role) {
-    if (role == Role::Patient) {
-        out << "Patient";
-    } else if (role == Role::Doctor) {
-        out << "Doctor";
-    } else if (role == Role::Admin) {
-        out << "Admin";
+std::ostream& operator<<(std::ostream& out, const Role& role) { // Note the addition of 'const'
+    switch (role) {
+        case Role::Patient:
+            out << "Patient";
+            break;
+        case Role::Doctor:
+            out << "Doctor";
+            break;
+        case Role::Admin:
+            out << "Admin";
+            break;
+        // Consider adding other cases here if there are any
+        default:
+            break;
     }
-    return out;
+    return out; // Ensure you return the ostream object
 }
+
 #endif // ROLE_H
