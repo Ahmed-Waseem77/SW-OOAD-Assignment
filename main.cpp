@@ -24,7 +24,7 @@
 
 
 int main() {
-    Doctor doctor();    
+    Doctor doctor;    
  
     return 0;
 }

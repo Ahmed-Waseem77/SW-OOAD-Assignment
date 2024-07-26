@@ -19,9 +19,8 @@
 
 
 #include "../User/User.hpp"
-#include <iostream>
 #include "../Exceptions/exceptions.hpp"
-
+#include "../Repository/Repository.hpp"
 
 User::User() {
     id = "";

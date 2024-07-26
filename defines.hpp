@@ -26,7 +26,7 @@ typedef int patientID;
 typedef int doctorID;
 typedef int appointmentID;
 typedef int status;
-typedef map<appointmentID, Appointment> schedule;
+typedef std::map<appointmentID, Appointment> schedule;
 typedef int connection;
 
 

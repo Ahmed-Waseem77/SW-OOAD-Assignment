@@ -18,8 +18,6 @@
 
 */
 
-
-
 #ifndef DOCTOR_HPP
 #define DOCTOR_HPP
 

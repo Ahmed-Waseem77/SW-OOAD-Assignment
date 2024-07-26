@@ -1,4 +1,3 @@
-#
 #   Design Template for a simple Hospital Management System.
 #   Copyright (C) 2024  Mahmoud Raslan, Ahmed Raslan
 
@@ -16,20 +15,15 @@
 #   with this program; if not, write to the Free Software Foundation, Inc.,
 #   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-CXX=g++
+CC=g++
+CFLAGS=-I. -std=c++11 
+DEPS = ./Doctor/Doctor.hpp ./Patient/Patient.hpp ./include/include.hpp ./Exceptions/expections.hpp ./Admin/Admin.hpp \
+./Appointment/Appointment.hpp ./Repository/Repository.hpp ./Role/Role.hpp ./User/User.hpp defines.hpp 
+OBJ = main.o Doctor.o Patient.o Admin.o Appointment.o Repository.o Role.o User.o \
+exceptions.o 
 
-CXXFLAGS=-Wall -g
+%.o: %.cpp $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
 
-INCLUDES=-I./include -I./Doctor -I./Patient -I./Appointment -I./User
-
-SOURCES=main.cpp
-
-TARGET=main
-
-$(TARGET): $(SOURCES)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SOURCES)
-
-# .PHONY rule for make clean
-.PHONY: clean
-clean:
-	rm -f $(TARGET)
+SW-OOAD-ASSIGNMENT: $(OBJ) # Replace your_project_name with the actual name
+	$(CC) -o $@ $^ $(CFLAGS)

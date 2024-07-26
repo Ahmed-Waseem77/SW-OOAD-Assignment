@@ -21,7 +21,7 @@
 #ifndef REPOSITORY_HPP
 #define REPOSITORY_HPP
 #include "../include/include.hpp"
-#include "defines.hpp"
+#include "../defines.hpp"
 #include "../Role/Role.hpp"
 #include "../User/User.hpp" 
 
@@ -37,8 +37,8 @@ public:
     
     Repository(const Repository& obj) = delete;
 
-    static schedule Repository::getAppointments(doctorID);
-    static bool createUserRecord( const User user);
+    static schedule getAppointments(doctorID);
+    static bool createUserRecord( const User);
     static bool updateUserRecord( const std::string& documentID, const std::string& jsonString);
     static bool removeUserRecord( const std::string& documentID);
     static int countDocuments(Role role);

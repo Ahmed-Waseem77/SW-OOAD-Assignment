@@ -1,6 +1,7 @@
 # build 
 build/
 CMakeFiles/
+.o
 
 # text editors
 .vscode/
@@ -11,3 +12,4 @@ CMakeFiles/
 main.exe
 .out
 .exe
+
