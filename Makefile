@@ -18,16 +18,12 @@
 CC=g++
 CFLAGS=-I. -std=c++11
 
-# Manually specify source files or use wildcard expansion
-# Example of wildcard expansion (might not work on all systems):
-# SRC := $(wildcard *.cpp) $(wildcard */*.cpp)
-# Manual specification (more portable and reliable):
-SRC := main.cpp ./Doctor/Doctor.cpp ./Patient/Patient.cpp ./Admin/Admin.cpp ./Repository/Repository.cpp  ./User/User.cpp
+DEPS := $(wildcard *.hpp) ./Doctor/Doctor.hpp ./Patient/Patient.hpp ./include/include.hpp ./Exceptions/exceptions.hpp ./Admin/Admin.hpp \
+./Appointment/Appointment.hpp ./Repository/Repository.hpp ./Role/Role.hpp ./User/User.hpp ./defines.hpp
 
+SRC := $(wildcard *.cpp) ./Doctor/Doctor.cpp ./Patient/Patient.cpp ./Admin/Admin.cpp ./Repository/Repository.cpp ./User/User.cpp
 OBJ := $(SRC:.cpp=.o)
 
-DEPS = ./Doctor/Doctor.hpp ./Patient/Patient.hpp ./include/include.hpp ./Exceptions/expections.hpp ./Admin/Admin.hpp \
-./Appointment/Appointment.hpp ./Repository/Repository.hpp ./Role/Role.hpp ./User/User.hpp ./defines.hpp
 
 %.o: %.cpp $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
