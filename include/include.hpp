@@ -27,5 +27,7 @@
 #include <map>
 #include <ctime>
 #include <stdexcept>
+#include <thread>
+#include <fstream>
 
 #endif // INCLUDE_HPP

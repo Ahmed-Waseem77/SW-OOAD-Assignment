@@ -20,12 +20,15 @@
 #ifndef DEFINES_H
 #define DEFINES_H
 
+#include "./Appointment/Appointment.hpp"
+
 typedef int patientID;
 typedef int doctorID;
 typedef int appointmentID;
 typedef int status;
 typedef map<appointmentID, Appointment> schedule;
 typedef int connection;
+
 
 #define NO_MEDICAL_RECORDS_STRING "No medical records found for patient"
 #define NO_MEDICAL_RECORDS_ERROR 1

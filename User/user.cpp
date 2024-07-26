@@ -18,7 +18,7 @@
 */
 
 
-#include "../User/user.hpp"
+#include "../User/User.hpp"
 #include <iostream>
 #include "../Exceptions/exceptions.hpp"
 
@@ -68,7 +68,7 @@ void User::promptUpdateUserAccount() {
         if(name.empty() || phoneNumber.empty() || emailAddress.empty() || password.empty()){
             throw invalid_argument("User information can't be empty");
         }
-        DbUtils* database= DbUtils::getInstance();
+        Repository* database= Repository::getInstance();
         //the name,phoneNumber,emailAddress,password should be in a json format
         //database->updateUserRecord(id,name,phoneNumber,emailAddress,password);
         cout << "Updating user account for " << name << emailAddress << endl;
@@ -84,7 +84,7 @@ void User::promptUpdateUserAccount() {
 
 void User::promptDeleteOwnAccount() {
     try{
-        DbUtils* database= DbUtils::getInstance();
+        Repository* database= Repository::getInstance();
         database->removeUserRecord(id);
         cout << "Account for " << emailAddress <<"whose id is" << id << "is deleted." << endl;
     }

@@ -18,36 +18,36 @@
 
 */
 
-#ifndef DBUTILS_HPP
-#define DBUTILS_HPP
-#include <../include/include.hpp>
+#ifndef REPOSITORY_HPP
+#define REPOSITORY_HPP
+#include "../include/include.hpp"
 #include "defines.hpp"
 #include "../Role/Role.hpp"
-#include "../User/user.hpp" 
-#include <thread>
- //Singleton Class since it is only one databaseConnection
-class DbUtils {
+#include "../User/User.hpp" 
+
+ //Singleton Class for repository architecture
+class Repository {
 private:
-    DbUtils();
-    static DbUtils* databaseInstance;
+    Repository();
+    static Repository* databaseInstance;
     static connection* databaseConnection;
 
 public:
     static bool connectionFlag;
     
-    DbUtils(const DbUtils& obj) = delete;
+    Repository(const Repository& obj) = delete;
 
-    static schedule DbUtils::getAppointments(doctorID);
+    static schedule Repository::getAppointments(doctorID);
     static bool createUserRecord( const User user);
     static bool updateUserRecord( const std::string& documentID, const std::string& jsonString);
     static bool removeUserRecord( const std::string& documentID);
     static int countDocuments(Role role);
 
-    static DbUtils* getInstance();
+    static Repository* getInstance();
     static void closeConnection();
     static bool checkDatabaseConnectionAsynchronously();
 
-    ~DbUtils();
+    ~Repository();
 
 };
 

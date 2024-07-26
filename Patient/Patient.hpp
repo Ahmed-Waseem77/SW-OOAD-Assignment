@@ -35,9 +35,8 @@ class Patient : public User {
         Patient();
         Patient(string medicalRecords, vector<doctorID> supervisedBy);
 
-
         void viewOwnMedicalRecords();
-        void getValidAppointments();
+        void viewValidAppointments(doctorID);
         bool bookAppointment(appointmentID);
         bool cancelAppointment(appointmentID);
         bool singup(string email, string password);

@@ -21,7 +21,7 @@
 #include "DbUtils.hpp"
 using namespace std;
 
-DbUtils::DbUtils() {
+Repository::Repository() {
     // Constructor: checks the connection with the database and returns true if the connection is successful otherwise false.
     try{
        if(!databaseConnection) {
@@ -37,12 +37,7 @@ DbUtils::DbUtils() {
 }
 
 
-<<<<<<< HEAD
-bool DbUtils::createUserRecord(const string& collection, const string& jsonString) {
-=======
-
-bool DbUtils::createUserRecord(User user) {
->>>>>>> 295e605003a15aacb843ac105e5f2d3c5cbad58c
+bool Repository::createUserRecord(User user) {
     
     try{
         if(!connectionFlag) {
@@ -57,7 +52,7 @@ bool DbUtils::createUserRecord(User user) {
     
 }
 
-bool DbUtils::updateUserRecord( const string& documentID, const string& jsonString) {
+bool Repository::updateUserRecord( const string& documentID, const string& jsonString) {
     try{
         if(!connectionFlag) {
             throw runtime_error ("Database connection failed");
@@ -72,7 +67,7 @@ bool DbUtils::updateUserRecord( const string& documentID, const string& jsonStri
     
 }
 
-bool DbUtils::removeUserRecord(const string& documentID) {
+bool Repository::removeUserRecord(const string& documentID) {
     try{
         if(!connectionFlag) {
             throw runtime_error ("Database connection failed");
@@ -87,7 +82,7 @@ bool DbUtils::removeUserRecord(const string& documentID) {
    
 }
 
-int DbUtils::countDocuments(Role role)
+int Repository::countDocuments(Role role)
 {
      try{
         if(!connectionFlag) {
@@ -101,25 +96,25 @@ int DbUtils::countDocuments(Role role)
         }
 }
 
-DbUtils *DbUtils::getInstance()
+Repository *Repository::getInstance()
 {
     if(databaseInstance == nullptr)
     {
-        databaseInstance = new DbUtils();
-        thread connectionCheckThread(&DbUtils::checkDatabaseConnectionAsynchronously, databaseInstance);
+        databaseInstance = new Repository();
+        thread connectionCheckThread(&Repository::checkDatabaseConnectionAsynchronously, databaseInstance);
         connectionCheckThread.detach();
     }
     return databaseInstance;
 }
 
-void DbUtils::closeConnection()
+void Repository::closeConnection()
 {
     //databaseConnection.close();
     cout << "Connection closed" << endl;
    
 }
 
-bool DbUtils::checkDatabaseConnectionAsynchronously()
+bool Repository::checkDatabaseConnectionAsynchronously()
 {
     while(databaseConnection != nullptr)
     {
@@ -129,7 +124,7 @@ bool DbUtils::checkDatabaseConnectionAsynchronously()
 }
 
 
-schedule DbUtils::getAppointments(doctorID) {
+schedule Repository::getAppointments(doctorID) {
     // Function to get the appointments from the database
     schedule appointments;
     try {

@@ -38,4 +38,15 @@ std::istream& operator>>(std::istream& in, Role& role) {
     role = roleMap[roleStr];
     return in;
 }
+
+std::ostream& operator<<(std::ostream& out, Role role) {
+    if (role == Role::Patient) {
+        out << "Patient";
+    } else if (role == Role::Doctor) {
+        out << "Doctor";
+    } else if (role == Role::Admin) {
+        out << "Admin";
+    }
+    return out;
+}
 #endif // ROLE_H

@@ -34,10 +34,17 @@ void Patient::viewOwnMedicalRecords() {
     std::cout << this->medicalRecords << std::endl;
 }
 
-void Patient::getValidAppointments(doctorID) {
-    // 
-    // Filter appointments that are valid
-    // Print valid appointments
+void Patient::viewValidAppointments(doctorID doctorID) {
+    schedule doctorSchedule = Repository::getAppointments(doctorID);
+
+    for(auto const& [key, val] : doctorSchedule) {
+        if (val.isBooked == false) {
+            std::cout << "Appointment ID: " << key << std::endl;
+            std::cout << "Start Date: " << asctime(&val.startDate) << std::endl;
+            std::cout << "End Date: " << asctime(&val.endDate) << std::endl;
+        }
+    }
+
 }
 
 bool Patient::bookAppointment(appointmentID) {

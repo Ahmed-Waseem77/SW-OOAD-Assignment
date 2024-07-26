@@ -1,7 +1,7 @@
 #include "DbUtils.hpp"
 using namespace std;
 
-DbUtils::DbUtils() {
+Repository::Repository() {
     // Constructor: checks the connection with the database and returns true if the connection is successful otherwise false.
     try{
        if(!databaseConnection) {
@@ -12,30 +12,24 @@ DbUtils::DbUtils() {
     catch (const exception& e) {
         cout << "Error: " << e.what() << endl;
     }
-
-    
 }
 
 
-
-bool DbUtils::createUserRecord(const string& collection, const string& jsonString) {
+bool Repository::createUserRecord(User user) {
     
     try{
         if(!connectionFlag) {
             throw runtime_error ("Database connection failed");
         }
-        //Insert the json string into the collection using the database connection pointer
         cout << "User record created successfully" << endl;
     }
     catch (const exception& e) {
             cout << "Error: " << e.what() << endl;
         }
-
-
     
 }
 
-bool DbUtils::updateUserRecord(const string& collection, const string& documentID, const string& jsonString) {
+bool Repository::updateUserRecord(const string& documentID, const string& jsonString) {
     try{
         if(!connectionFlag) {
             throw runtime_error ("Database connection failed");
@@ -50,7 +44,7 @@ bool DbUtils::updateUserRecord(const string& collection, const string& documentI
     
 }
 
-bool DbUtils::removeUserRecord(const string& collection, const string& documentID) {
+bool Repository::removeUserRecord(const string& documentID) {
     try{
         if(!connectionFlag) {
             throw runtime_error ("Database connection failed");
@@ -64,33 +58,33 @@ bool DbUtils::removeUserRecord(const string& collection, const string& documentI
    
 }
 
-int DbUtils::countDocuments(const std::string &collection)
+int Repository::countDocuments(Role role)
 {
      try{
         if(!connectionFlag) {
             throw runtime_error ("Database connection failed");
         }
         //count the number of documents in the collection using the database connection pointer
-        cout << "Number of documents in the collection: " << collection << " is 5" << endl;
+        cout << "Number of Users in the collection" << role << " is 5" << endl;
     }
     catch (const exception& e) {
             cout << "Error: " << e.what() << endl;
         }
 }
 
-DbUtils *DbUtils::getInstance()
+Repository *Repository::getInstance()
 {
     if(databaseInstance == nullptr)
     {
-        databaseInstance = new DbUtils();
-        thread connectionCheckThread(&DbUtils::checkDatabaseConnectionAsynchronously, databaseInstance);
+        databaseInstance = new Repository();
+        thread connectionCheckThread(&Repository::checkDatabaseConnectionAsynchronously, databaseInstance);
         connectionCheckThread.detach();
     }
     return databaseInstance;
 }
 
 
-bool DbUtils::checkDatabaseConnectionAsynchronously()
+bool Repository::checkDatabaseConnectionAsynchronously()
 {
     while(databaseConnection != nullptr)
     {
