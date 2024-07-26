@@ -22,8 +22,8 @@
 
 #include "./Appointment/Appointment.hpp"
 
-typedef int patientID;
-typedef int doctorID;
+typedef std::string patientID;
+typedef std::string doctorID;
 typedef int appointmentID;
 typedef int status;
 typedef std::unordered_map<appointmentID, Appointment> schedule;

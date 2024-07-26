@@ -18,8 +18,15 @@
 
 */
 
-#include "Repository.hpp"
+#include "./Repository.hpp"
 using namespace std;
+
+bool Repository::connectionFlag = true; 
+Repository* Repository::databaseInstance = nullptr; 
+
+connection one = 1;
+connection* Repository::databaseConnection = &one; 
+
 
 Repository::Repository() {
     // Constructor: checks the connection with the database and returns true if the connection is successful otherwise false.
@@ -36,9 +43,7 @@ Repository::Repository() {
     
 }
 
-
 bool Repository::createUserRecord(User user) {
-    
     try{
         if(!connectionFlag) {
             throw runtime_error ("Database connection failed");
@@ -49,7 +54,6 @@ bool Repository::createUserRecord(User user) {
     catch (const exception& e) {
             cout << "Error: " << e.what() << endl;
         }
-    
 }
 
 bool Repository::updateUserRecord( const string& documentID, const string& jsonString) {
@@ -101,8 +105,10 @@ Repository *Repository::getInstance()
     if(databaseInstance == nullptr)
     {
         databaseInstance = new Repository();
-        thread connectionCheckThread(&Repository::checkDatabaseConnectionAsynchronously, databaseInstance);
-        connectionCheckThread.detach();
+
+        // run in a separate thread 
+        // std::thread connectionCheckThread(&Repository::checkDatabaseConnectionAsynchronously, std::ref(*databaseInstance));
+        // connectionCheckThread.detach();
     }
     return databaseInstance;
 }

@@ -24,6 +24,7 @@
 #include "../defines.hpp"
 #include "../Role/Role.hpp"
 #include "../User/User.hpp"
+#include <mutex>
 
  //Singleton Class for repository architecture
 class Repository {
@@ -31,6 +32,7 @@ private:
     Repository();
     static Repository* databaseInstance;
     static connection* databaseConnection;
+    static std::mutex connectionMutex;
 
 public:
     static bool connectionFlag;

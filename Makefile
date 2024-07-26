@@ -16,7 +16,8 @@
 #   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 CC=g++
-CFLAGS=-I. -std=c++11
+# multithreaded
+CFLAGS=-I. -std=c++11 -lpthread
 
 DEPS := $(wildcard *.hpp) ./Doctor/Doctor.hpp ./Patient/Patient.hpp ./include/include.hpp ./Exceptions/exceptions.hpp ./Admin/Admin.hpp \
 ./Appointment/Appointment.hpp ./Repository/Repository.hpp ./Role/Role.hpp ./User/User.hpp ./defines.hpp
@@ -30,3 +31,20 @@ OBJ := $(SRC:.cpp=.o)
 
 SW-OOAD-ASSIGNMENT: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
+
+EXECUTABLE=HospitalManagementSystem
+
+# The first rule is the default when "make" is run without arguments
+all: $(EXECUTABLE)	
+
+# Rule for linking the executable
+$(EXECUTABLE): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^		
+
+# Rule for compiling object files
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@	
+
+# Rule for cleaning up generated files
+clean:
+	rm -f $(OBJS) $(EXECUTABLE)	

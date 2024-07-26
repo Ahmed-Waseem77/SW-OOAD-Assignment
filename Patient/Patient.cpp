@@ -48,23 +48,35 @@ void Patient::viewValidAppointments(doctorID doctorID) {
 }
 
 bool Patient::bookAppointment(appointmentID) {
-    // Check if appointment is valid
-    // Check if appointment is available
-    // Book appointment
+    try {
+        //send update query through repository
+        std::cout << "Appointment booked successfully" << std::endl;
+    }
+    catch (const std::exception& e) {
+        std::cout << "Error: " << e.what() << std::endl;
+    }
+
 }
 
 bool Patient::cancelAppointment(appointmentID) {
-    // Check if appointment is valid
-    // Check if appointment is booked
-    // Cancel appointment
+    try {
+        //send update query through repository
+        std::cout << "Appointment canceled successfully" << std::endl;
+    }
+    catch (const std::exception& e) {
+        std::cout << "Error: " << e.what() << std::endl;
+    }
+
 }
 
 bool Patient::singup(std::string email, std::string password) {
-    // Check if email is valid
-    // Check if password is valid
-    // Check if email is not already used
-    // Check if password is not already used
-    // Singup
+    try {
+        //send insert query through repository
+        std::cout << "Patient signed up successfully" << std::endl;
+    }
+    catch (const std::exception& e) {
+        std::cout << "Error: " << e.what() << std::endl;
+    }
 }
 
 

@@ -21,10 +21,32 @@
 #include "./Appointment/Appointment.hpp"
 #include "User/User.hpp"
 #include "./include/include.hpp"
-
+#include "./Admin/Admin.hpp"
+#include "./Patient/Patient.hpp"
 
 int main() {
-    Doctor doctor;    
- 
+
+    Admin admin;
+
+    admin.promptCreateUserAccount();
+    admin.promptUpdateUserAccount();
+    admin.promptDeleteUserAccount();
+    admin.promptDeleteOwnAccount();
+
+    Doctor doctor;
+    doctor.login("7ammada@7amada","7amada");
+    doctor.updatePatientMedicalRecords("1");
+    doctor.promptUpdateUserAccount();
+
+    Patient patient;
+    patient.singup("7amada@gmail.com","123415151515");
+    patient.viewValidAppointments("12");
+    patient.bookAppointment(1);
+    patient.viewOwnMedicalRecords();
+    patient.viewAccount();
+
+
+
+    
     return 0;
 }

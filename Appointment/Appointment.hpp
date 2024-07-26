@@ -22,7 +22,6 @@
 
 #include "../include/include.hpp"
 
-
 struct Appointment {
         int appointmentID;
 

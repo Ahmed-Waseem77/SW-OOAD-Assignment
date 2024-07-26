@@ -28,20 +28,20 @@ enum class Role {
     Admin
 };
 
-std::unordered_map<std::string, Role> roleunordered_map = {
+inline std::unordered_map<std::string, Role> roleunordered_map = {
     {"Patient", Role::Patient},
     {"Doctor", Role::Doctor},
     {"Admin", Role::Admin}
 };
 
-std::istream& operator>>(std::istream& in, Role& role) {
+inline std::istream& operator>>(std::istream& in, Role& role) {
     std::string roleStr;
     in >> roleStr;
     role = roleunordered_map[roleStr];
     return in;
 }
 
-std::ostream& operator<<(std::ostream& out, const Role& role) { // Note the addition of 'const'
+inline std::ostream& operator<<(std::ostream& out, const Role& role) { // Note the addition of 'const'
     switch (role) {
         case Role::Patient:
             out << "Patient";
