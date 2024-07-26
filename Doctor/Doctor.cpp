@@ -21,12 +21,15 @@
 #include "./Doctor.hpp"
 
 Doctor::Doctor() {
-    salary = 0;
+    this->role = Role::Doctor;
+    this->salary = 0;
+    this->appointments = {};
 }
 
-Doctor::Doctor(float salary, schedule appointments) {
+Doctor::Doctor(std::string phone, double salary) {
+    this->role = Role::Doctor;
     this->salary = salary;
-    this->appointments = appointments;
+    this->appointments = {};
 }
 
 void Doctor::viewAppointments() {

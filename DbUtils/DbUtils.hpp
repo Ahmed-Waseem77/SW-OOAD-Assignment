@@ -3,7 +3,7 @@
 #include <../include/include.hpp>
 #include "defines.hpp"
 #include <thread>
- //Singlton Class since it is only one databaseConnection of the class
+ //Singleton Class since it is only one databaseConnection
 class DbUtils {
 private:
     DbUtils();
@@ -15,10 +15,11 @@ public:
     
     DbUtils(const DbUtils& obj) = delete;
 
+    static schedule DbUtils::getAppointments(doctorID);
+    static int countDocuments(const std::string& collection);
     static bool createUserRecord(const std::string& collection, const std::string& jsonString);
     static bool updateUserRecord(const std::string& collection, const std::string& documentID, const std::string& jsonString);
     static bool removeUserRecord(const std::string& collection, const std::string& documentID);
-    static int countDocuments(const std::string& collection);
 
     static DbUtils* getInstance();
     static void closeConnection();

@@ -15,37 +15,34 @@
     You should have received a copy of the GNU General Public License along
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-
 */
 
-
-
-#ifndef DOCTOR_HPP
-#define DOCTOR_HPP
+#ifndef PATIENT_HPP
+#define PATIENT_HPP
 
 #include "../include/include.hpp"
-#include "../User/user.hpp"
-#include "../Appointment/Appointment.hpp"
+#include "../User/User.hpp"
+#include "../Doctor/Doctor.hpp"
 #include "../defines.hpp"
+#include "../DbUtils/DbUtils.hpp"
 
-class Doctor : public User {
+class Patient : public User {
+    private:
+        string medicalRecords;
+        vector<doctorID> supervisedBy;
 
-private:
-    float salary;
-    
-public:
-    Doctor();
-    Doctor(std::string phone, double salary);
+    public:
+        Patient();
+        Patient(string medicalRecords, vector<doctorID> supervisedBy);
 
-    schedule appointments;
 
-    void viewAppointments();
+        void viewOwnMedicalRecords();
+        void getValidAppointments();
+        bool bookAppointment(appointmentID);
+        bool cancelAppointment(appointmentID);
+        bool singup(string email, string password);
 
-    status viewPatientMedicalRecords(patientID);
-    status updatePatientMedicalRecords(patientID); 
-
-    bool isValidAppointment(appointmentID);
-    bool setAppointments(schedule newAppointments);
 };
 
-#endif // DOCTOR_HPP
+
+#endif // PATIENT_HPP

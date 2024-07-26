@@ -17,6 +17,7 @@ DbUtils::DbUtils() {
 }
 
 
+
 bool DbUtils::createUserRecord(const string& collection, const string& jsonString) {
     
     try{
@@ -29,6 +30,8 @@ bool DbUtils::createUserRecord(const string& collection, const string& jsonStrin
     catch (const exception& e) {
             cout << "Error: " << e.what() << endl;
         }
+
+
     
 }
 
@@ -95,22 +98,4 @@ bool DbUtils::checkDatabaseConnectionAsynchronously()
     }
     connectionFlag = false;
 }
-
-
-schedule DbUtils::getAppointments(doctorID) {
-    // Function to get the appointments from the database
-    schedule appointments;
-    try {
-        if(!connectionFlag) {
-            throw runtime_error ("Database connection failed");
-        }
-        //get the appointments from the database using the database connection pointer
-        cout << "Appointments fetched successfully" << endl;
-    }
-    catch (const exception& e) {
-            cout << "Error: " << e.what() << endl;
-        }
-    return appointments;
-}
-
 
